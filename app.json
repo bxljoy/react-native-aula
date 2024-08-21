@@ -1,9 +1,10 @@
 {
   "expo": {
-    "name": "react_native_crash",
-    "slug": "react_native_crash",
+    "name": "Aula Video",
+    "slug": "aula-video",
     "version": "1.0.0",
     "orientation": "portrait",
+    "scheme": "aula-video",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "splash": {
@@ -22,6 +23,7 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "plugins": ["expo-router", "expo-font"]
   }
 }
