@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, Image, ScrollView } from "react-native";
+import { Text, View, Image, ScrollView, Alert } from "react-native";
 import { useState } from "react";
 import { images } from "../../constants";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -15,7 +15,25 @@ const SignIn = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const submit = () => {
-    console.log(form);
+    if (form.email === "" || form.password === "") {
+      Alert.alert("Error", "Please fill in all fields");
+    }
+
+    // setIsSubmitting(true);
+
+    // try {
+    //   await signIn(form.email, form.password);
+    //   const result = await getCurrentUser();
+    //   setUser(result);
+    //   setIsLogged(true);
+
+    //   Alert.alert("Success", "User signed in successfully");
+    //   router.replace("/home");
+    // } catch (error) {
+    //   Alert.alert("Error", error.message);
+    // } finally {
+    //   setIsSubmitting(false);
+    // }
   };
 
   return (
@@ -77,5 +95,3 @@ const SignIn = () => {
 };
 
 export default SignIn;
-
-const styles = StyleSheet.create({});
