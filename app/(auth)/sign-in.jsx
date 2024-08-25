@@ -2,9 +2,10 @@ import { Text, View, Image, ScrollView, Alert } from "react-native";
 import { useState } from "react";
 import { images } from "../../constants";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { Link } from "expo-router";
+import { Link, router } from "expo-router";
 import FormField from "../../components/FormField";
 import CustomButton from "../../components/CustomButton";
+import { signIn, getCurrentUser } from "../../lib/appwrite";
 
 const SignIn = () => {
   const [form, setForm] = useState({
@@ -14,26 +15,26 @@ const SignIn = () => {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const submit = () => {
+  const submit = async () => {
     if (form.email === "" || form.password === "") {
       Alert.alert("Error", "Please fill in all fields");
     }
 
-    // setIsSubmitting(true);
+    setIsSubmitting(true);
 
-    // try {
-    //   await signIn(form.email, form.password);
-    //   const result = await getCurrentUser();
-    //   setUser(result);
-    //   setIsLogged(true);
+    try {
+      await signIn(form.email, form.password);
+      const result = await getCurrentUser();
+      // setUser(result);
+      // setIsLogged(true);
 
-    //   Alert.alert("Success", "User signed in successfully");
-    //   router.replace("/home");
-    // } catch (error) {
-    //   Alert.alert("Error", error.message);
-    // } finally {
-    //   setIsSubmitting(false);
-    // }
+      Alert.alert("Success", "User signed in successfully");
+      router.replace("/home");
+    } catch (error) {
+      Alert.alert("Error", error.message);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (

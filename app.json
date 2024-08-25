@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "Aula Video",
+    "name": "AulaVideo",
     "slug": "aula-video",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -13,7 +13,8 @@
       "backgroundColor": "#ffffff"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.alex.aula"
     },
     "android": {
       "adaptiveIcon": {
